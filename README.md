@@ -1,15 +1,13 @@
-# Building Wallets
+# Token Revoker
 
-Learn how to build a Web3 Wallet easily with the Covalent API!
+This project revokes token approvals on DFK Chain.
 
-To use this repo, simply:
+To use this repo, you will need an API Key from Covalent.
 
-`git clone https://github.com/xiaogit00/building-wallets.git`
+In `.env`, set `COVALENT_APIKEY` to your API Key.
 
-`cd building-wallets` 
+Then:
 
 `npm i`
-
-`git checkout part1-tokenDisplay`
 
 `npm start`
