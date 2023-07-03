@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
 import './App.css';
 import HandleData from './components/HandleData'
+import PendingModal from './components/PendingModal';
+import { ModalContext } from './context/ModalContext';
 
 function App() {
-
+  
   const [haveMetamask, sethaveMetamask] = useState(false);
   const [accountAddress, setAccountAddress] = useState('');
   const [isConnected, setIsConnected] = useState(false);
   const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
+  const {showPending} = useContext(ModalContext);
 
   const { ethereum } = window;
   const dfkChainId = '0xd2af';
@@ -60,6 +64,10 @@ function App() {
     }
   };
 
+  // const togglePending = () => {
+  //   setShowPending(!showPending);
+  // };
+
 
   // Listen for presence of wallet
   useEffect(() => {
@@ -97,6 +105,8 @@ function App() {
 
   
   return (
+    <>
+    {showPending && <PendingModal/>}
     <div className='modalWrapper'>
       <div className='outerContainer'>
         <div className='modal fancy'>
@@ -137,6 +147,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

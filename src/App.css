@@ -1,5 +1,5 @@
 .loading {
-  height: 100px;
+  /* height: 100px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -352,6 +352,20 @@
 
 }
 
+.revokeButton.disabled {
+  background-image: url(./assets/gray-middle.png);
+  cursor: default;
+
+  &:before {
+    background-image: url(./assets/gray-left.png), url(./assets/gray-right.png);
+  }
+
+  &:active {
+    top: 0px;
+  }
+
+}
+
 .revokeButton.retry {
   font-size: 18px;
   padding: 24px;
@@ -416,8 +430,7 @@
 
   @media (max-width: 768px) {
     width: 200px; 
-}
-
+  }
 }
 
 .fancyButton {
@@ -465,7 +478,7 @@
   }
 }
 
-.disabled {
+.fancyButton.disabled {
   background-image: url(./assets/btn_disabled_middle.png);
 
   &:before {
@@ -578,4 +591,38 @@
   .right {
     padding: 0px;
   }
+}
+
+/* Pending Modal */
+
+.pendingWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pendingInner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+
+  background-color: orange;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; 
+  background-color: rgb(243, 132, 30); 
+  border: 1px solid rgb(243, 132, 30);
+  border-radius: 0px 0px 5px 5px;
+
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 9999;
+}
+
+.pendingText {
+  padding-left: 5px;
+}
+
+.pendingIcon {
+  width: 10px;
+  height: 10px;
 }
