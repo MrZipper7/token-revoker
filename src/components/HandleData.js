@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 
-import '../App.css'
 import TokenAllowance from './TokenAllowance';
+import '../App.css'
+
 
 const HandleData = ( {accountAddress} ) => {
   const [data, setData] = useState(null)
@@ -36,7 +37,6 @@ const HandleData = ( {accountAddress} ) => {
   }, []);
 
   const retryFetch = () => {
-    console.log('hello')
     setError(false)
     setLoading(true)
     fetchData();
@@ -73,4 +73,4 @@ const HandleData = ( {accountAddress} ) => {
   )
 }
 
-export default HandleData
+export default HandleData;

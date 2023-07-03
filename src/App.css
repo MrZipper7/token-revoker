@@ -14,7 +14,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   overflow-y: auto;
   overflow-x: hidden;
   animation: fade 0.4s ease-in-out;
@@ -30,7 +30,7 @@
     justify-content: center;
     flex-direction: column;
     max-width: 744px;
-    margin: 6em auto;
+    margin: 3em auto;
   }
   
 .modal {
@@ -510,9 +510,18 @@
   }
 }
 
+
+/* -------------- */
+/* Mobile Styling */
+/* -------------- */
+
 @media (max-width: 600px) {
   .outerContainer {
-    margin: auto auto;
+    margin: 0px auto;
+  }
+
+  .modalWrapper {
+    align-items: center;
   }
 
   .tokenRow {
@@ -625,4 +634,46 @@
 .pendingIcon {
   width: 10px;
   height: 10px;
+}
+
+/* WalletInfo */
+.walletWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.walletInfoButton {
+  background-color: #6db75c;
+  padding: 12px 32px;
+  /* color: white; */
+  font-family: Poppins;
+  font-weight: 500;
+  border-radius: 15px;
+  /* border: none; */
+  border: 1px solid #91d565;
+  background: rgba(0,0,0,.488) 0 0 no-repeat padding-box;
+  color: #91d565;
+  width: 150px;
+  cursor: pointer;
+
+  &:hover {
+    /* background-color: #6db75c */
+    /* color: #6db75c */
+    color: #93fa50;
+    border-color: #93fa50;
+  }
+}
+
+@media (max-width: 420px) {
+  .walletWrapper {
+    margin: 10px;
+  }
+
+  .walletInfoButton {
+    padding: 8px 20px;
+    font-size: 12px;
+    width: 120px;
+  }
+
 }

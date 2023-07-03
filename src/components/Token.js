@@ -30,4 +30,4 @@ const Token = ( {tokenItem} ) => {
   )
 }
 
-export default Token
+export default Token;

@@ -89,4 +89,4 @@ const Contracts = ( { spenders, token, walletAddress } ) => {
   )
 }
 
-export default Contracts
+export default Contracts;

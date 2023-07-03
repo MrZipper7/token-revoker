@@ -1,72 +1,38 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 
-import './App.css';
+import { ModalContext } from './context/ModalContext';
+import useWalletConnect from './components/useWalletConnect'
 import HandleData from './components/HandleData'
 import PendingModal from './components/PendingModal';
-import { ModalContext } from './context/ModalContext';
+import WalletInfo from './components/WalletInfo';
+import './App.css';
+
 
 function App() {
   
   const [haveMetamask, sethaveMetamask] = useState(false);
-  const [accountAddress, setAccountAddress] = useState('');
-  const [isConnected, setIsConnected] = useState(false);
-  const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
-  const {showPending} = useContext(ModalContext);
+  const { connectWallet } = useWalletConnect();
+  const { accountAddress } = useContext(ModalContext);
+  const { isConnected, setIsConnected } = useContext(ModalContext);
+  const { isCorrectNetwork, setIsCorrectNetwork } = useContext(ModalContext);
+  const { showPending } = useContext(ModalContext);
 
   const { ethereum } = window;
   const dfkChainId = '0xd2af';
 
-  // Connect MM wallet & prompt to switch networks as needed
-  const connectWallet = async () => {
-    try {
-      const accounts = await ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-      setAccountAddress(accounts[0]);
-      if (isCorrectNetwork) {
-        setIsConnected(true)
-      } else {
-        switchChain().then(() => {
-          setIsConnected(true);
-        });
-      }
-    } catch (error) {
-      console.log('Connect Wallet Error')
-      setIsConnected(false);
-    }
+  const handleConnectWallet = () => {
+    connectWallet()
   };
 
-  // Switch network to DFK Chain
-  const switchChain = async () => {
-    window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [{
-          chainId: dfkChainId,
-          rpcUrls: ["https://subnets.avax.network/defi-kingdoms/dfk-chain/rpc"],
-          chainName: "DFK Chain",
-          nativeCurrency: {
-              name: "JEWEL",
-              symbol: "JEWEL",
-              decimals: 18
-          },
-          blockExplorerUrls: ["https://subnets.avax.network/defi-kingdoms/"]
-      }]
-    });
-  }
-
   // Confirm that we are on the correct network
-  const checkChainId = async () => {
+  const checkChainId = useCallback(async () => {
     if (window.ethereum) {
       const currentChainId = await window.ethereum.request({
         method: 'eth_chainId',
       });
       setIsCorrectNetwork(currentChainId === dfkChainId);
     }
-  };
-
-  // const togglePending = () => {
-  //   setShowPending(!showPending);
-  // };
+  }, [setIsCorrectNetwork]);
 
 
   // Listen for presence of wallet
@@ -96,18 +62,20 @@ function App() {
       window.ethereum.on('accountsChanged', handleAccountsChanged);
     }
     
-  }, []);
+  }, [checkChainId, setIsConnected]);
 
   // Listen for changes to network (& set initial)
   useEffect(() => {
     checkChainId();
-  }, [])
+  }, [checkChainId])
 
   
   return (
     <>
     {showPending && <PendingModal/>}
+    {/* <PendingModal/> */}
     <div className='modalWrapper'>
+      <WalletInfo isConnected={isConnected} accountAddress={accountAddress}/>
       <div className='outerContainer'>
         <div className='modal fancy'>
           <div className='title'>
@@ -125,7 +93,7 @@ function App() {
                   <>
                     <p>Connect your wallet to continue.</p>
                     <div className='button-wrapper'>
-                      <button className="fancyButton active" onClick={connectWallet}>
+                      <button className="fancyButton active" onClick={handleConnectWallet}>
                         Connect
                       </button>
                     </div>

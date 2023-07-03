@@ -835,4 +835,4 @@ const tokenInfo = [
 
   ]
   
-  export { parseTokenInfo }
+export { parseTokenInfo };
