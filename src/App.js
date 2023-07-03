@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 
 import { ModalContext } from './context/ModalContext';
-import useWalletConnect from './components/useWalletConnect'
+import useWalletConnect from './hooks/useWalletConnect'
 import HandleData from './components/HandleData'
 import PendingModal from './components/PendingModal';
 import WalletInfo from './components/WalletInfo';

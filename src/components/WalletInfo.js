@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 
 import { ModalContext } from '../context/ModalContext'
-import useWalletConnect from './useWalletConnect'
+import useWalletConnect from '../hooks/useWalletConnect'
 import { truncateEthAddress } from '../utils/truncateEthAddress'
 import '../App.css'
 
