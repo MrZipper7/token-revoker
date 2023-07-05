@@ -110,7 +110,11 @@ function App() {
                 </div>
               </>
             )}
-            <p className='warning'>This tool was developed by a third party and is not affiliated with DeFi Kingdoms or Kingdom Studios. Use it at your own risk. You can verify all official contracts in the DFK Developer Documentation at: <a href='https://devs.defikingdoms.com' target='_blank' rel='noreferrer'>https://devs.defikingdoms.com</a>.</p>
+            <p className='warning'>This tool was developed by <strong>MrZipper</strong> for the DeFi Kingdoms community and is not directly affiliated with DeFi Kingdoms or Kingdom Studios. Use it at your own risk. You can verify all official contracts in the DFK Developer Documentation at: <a href='https://devs.defikingdoms.com' target='_blank' rel='noreferrer'>https://devs.defikingdoms.com</a>.</p>
+            <div className='social-icons'>
+              <a href='https://twitter.com/MrZipper7/' target='_blank' rel='noreferrer'><img className='social-icon' src='../icons8-twitter.svg' alt='twitter' width='24px' /></a>
+              <a href='https://github.com/MrZipper7/token-revoker/' target='_blank' rel='noreferrer'><img className='social-icon' src='../icons8-github.svg' alt='github' width='24px' /></a>
+            </div>
           </div>
         </div>
       </div>
