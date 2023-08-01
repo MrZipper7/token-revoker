@@ -36,7 +36,6 @@ const tokenInfo = [
         name: "Pasture",
         logo: ""
     },
-
     {
         contractAddress: "0x3C351E1afdd1b1BC44e931E12D4E05D6125eaeCa",
         name: "UniswapV2 Router",
@@ -165,6 +164,16 @@ const tokenInfo = [
     {
         contractAddress: "0xcBeC62FdDD92d97E3493407501b89d6491E17429",
         name: "Barkeep Kessing (Discord)",
+        logo: ""
+    },
+    {
+        contractAddress: "0x902F2b740bC158e16170d57528405d7f2a793Ca2",
+        name: "Bazaar",
+        logo: ""
+    },
+    {
+        contractAddress: "0x33606BE9839E180Bc7f671de008CB3669dD61A42",
+        name: "Locked CRYSTAL Transfer",
         logo: ""
     },
     
