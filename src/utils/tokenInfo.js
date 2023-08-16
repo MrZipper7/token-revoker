@@ -157,6 +157,11 @@ const tokenInfo = [
         logo: ""
     },
     {
+        contractAddress: "0x8990EAc13974522e5DAb87241a5002A61b2883d1",
+        name: "DFK Duel S5",
+        logo: ""
+    },
+    {
         contractAddress: "0xeD1194F75180bb623231D2489071fE9c3e1e04e0",
         name: "Token Raffle (Offerings)",
         logo: ""
