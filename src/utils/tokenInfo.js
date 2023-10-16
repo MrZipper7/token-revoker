@@ -181,7 +181,11 @@ const tokenInfo = [
         name: "Locked CRYSTAL Transfer",
         logo: ""
     },
-    
+    {
+        contractAddress: "0xEaC69796Cff468ED1694A6FfAc4cbC23bbe33aFa",
+        name: "Void Hunts",
+        logo: ""
+    },
 
     // Major Tokens & Currencies
     {
@@ -845,8 +849,12 @@ const tokenInfo = [
         contractAddress: "0x8Df3fFa5a677ba9737CE8Afcb8dd15Bd74085adD",
         name: "Premium Pet Treat",
         logo: "https://defi-kingdoms.b-cdn.net/art-assets/items/pet-treat-premium.png"
-    }
-
+    },
+    {
+        contractAddress: "0xBCd74403f82c61E247f2ba2A546EB3d0D2296936",
+        name: "Void Shard",
+        logo: "https://defi-kingdoms.b-cdn.net/art-assets/items/void.gif"
+    },
   ]
   
 export { parseTokenInfo };
