@@ -186,6 +186,11 @@ const tokenInfo = [
         name: "Void Hunts",
         logo: ""
     },
+    {
+        contractAddress: "0xb7F679d69FA55b762F7f48432Da77D096d749540",
+        name: "DFK Duel S6",
+        logo: ""
+    },
 
     // Major Tokens & Currencies
     {
