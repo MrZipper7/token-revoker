@@ -15,7 +15,7 @@ const HandleData = ( {accountAddress} ) => {
     const approvalsEndpoint = `https://api.covalenthq.com/v1/defi-kingdoms-mainnet/approvals/${accountAddress}/`
     const config = {
       headers: {
-        "Authorization": `Bearer ${process.env.REACT_APP_APIKEY}`
+        "Authorization": `Bearer ${import.meta.env.REACT_APP_APIKEY}`
       }
     }
     axios.get(approvalsEndpoint, config)
