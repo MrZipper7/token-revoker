@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import '../App.css'
 import type { APIReturnData, APITokenData } from '../types.js'
@@ -9,7 +9,7 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true)
     const approvalsEndpoint = `https://api.routescan.io/v2/network/mainnet/evm/53935/address/${accountAddress}/erc20-approvals?limit=100`
     // const config = {
@@ -29,12 +29,11 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
         setError(true)
         setLoading(false)
       })
-  }
+  }, [accountAddress])
 
   useEffect(() => {
     fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [fetchData])
 
   const retryFetch = () => {
     setError(false)
@@ -49,7 +48,7 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
           <p>
             <strong>Something went wrong. Please refresh and try again.</strong>
           </p>
-          <button className="revokeButton retry" onClick={retryFetch}>
+          <button type={'submit'} className="revokeButton retry" onClick={retryFetch}>
             Retry
           </button>
         </div>
@@ -62,7 +61,7 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
                   className="tokenLogo rotate"
                   alt=""
                   src="https://glacier-api.avax.network/proxy/chain-assets/a0a2d1a/chains/53935/contracts/0x77f2656d04E158f915bC22f07B779D94c1DC47Ff/logo.png"
-                ></img>
+                />
               </div>
               <p>Loading Token Approvals...</p>
             </div>

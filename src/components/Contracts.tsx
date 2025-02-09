@@ -61,12 +61,12 @@ const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
         {rows.map((item, index) => {
           const isRowDisabled = disabledRows[index]
           return (
-            <div className="allowanceRow" key={index}>
+            <div className="allowanceRow" key={`${item.id.slice(0, 8)}-${index}`}>
               <div className="contract">
                 <div className="contractName">{parseTokenInfo(item.id).name}</div>
                 <a
                   className="addressUrl"
-                  href={'https://subnets.avax.network/defi-kingdoms/address/' + item.id}
+                  href={`https://subnets.avax.network/defi-kingdoms/address/${item.id}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -86,6 +86,7 @@ const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
 
               <div className="revoke">
                 <button
+                  type={'submit'}
                   className={`revokeButton ${isRowDisabled ? 'disabled' : ''}`}
                   disabled={isRowDisabled}
                   onClick={() => {

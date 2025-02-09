@@ -28,9 +28,12 @@ const WalletInfo = () => {
   return (
     <div className="walletWrapper">
       <button
+        type={'button'}
         className="walletInfoButton"
+        onFocus={handleMouseOver}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
+        onBlur={handleMouseOut}
         onClick={handleOnClick}
       >
         {buttonText}

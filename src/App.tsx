@@ -30,6 +30,7 @@ function App() {
   }, [setIsCorrectNetwork])
 
   // Listen for presence of wallet
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Unclear if necessary
   useEffect(() => {
     const checkMetamaskAvailability = async () => {
       if (!window.ethereum) {
@@ -85,7 +86,7 @@ function App() {
                     <>
                       <p>Connect your wallet to continue.</p>
                       <div className="button-wrapper">
-                        <button className="fancyButton active" onClick={handleConnectWallet}>
+                        <button className="fancyButton active" type={'submit'} onClick={handleConnectWallet}>
                           Connect
                         </button>
                       </div>
@@ -102,7 +103,7 @@ function App() {
                     </strong>
                   </p>
                   <div className="button-wrapper">
-                    <button className="fancyButton disabled" disabled={true}>
+                    <button className="fancyButton disabled" type={'submit'} disabled={true}>
                       Connect
                     </button>
                   </div>

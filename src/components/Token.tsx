@@ -30,7 +30,7 @@ const Token = ({ tokenItem }: { tokenItem: APITokenData }) => {
       <div className="right">
         <a
           className="addressUrl"
-          href={'https://subnets.avax.network/defi-kingdoms/address/' + tokenItem.tokenAddress}
+          href={`https://subnets.avax.network/defi-kingdoms/address/${tokenItem.tokenAddress}`}
           target="_blank"
           rel="noreferrer"
         >

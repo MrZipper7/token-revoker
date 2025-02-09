@@ -24,23 +24,22 @@
 }
 
 .outerContainer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 744px;
-    margin: 3em auto;
-  }
-  
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 744px;
+  margin: 3em auto;
+}
+
 .modal {
   position: relative;
   width: 100%;
   padding: 80px;
   background-color: #ffe3bd;
-  background-image: url('./assets/basic_left.png'),
-    url('./assets/basic_right.png'), url('./assets/fancy_top.png'),
-    url('./assets/basic_bottom.png');
+  background-image: url("./assets/basic_left.png"), url("./assets/basic_right.png"), url("./assets/fancy_top.png"),
+    url("./assets/basic_bottom.png");
   background-position: top left, top right, top left, bottom left;
   background-repeat: repeat-y, repeat-y, repeat-x, repeat-x;
   z-index: 2;
@@ -51,7 +50,7 @@
   }
 
   &:before {
-    content: '';
+    content: "";
     pointer-events: none;
     display: block;
     position: absolute;
@@ -61,9 +60,8 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    background-image: url('./assets/fancy_top_left_jewel.png'),
-      url('./assets/fancy_top_right.png'), url('./assets/basic_bottom_left.png'),
-      url('./assets/basic_bottom_right.png');
+    background-image: url("./assets/fancy_top_left_jewel.png"), url("./assets/fancy_top_right.png"),
+      url("./assets/basic_bottom_left.png"), url("./assets/basic_bottom_right.png");
     background-position: top left, top right, bottom left, bottom right;
     background-repeat: no-repeat;
   }
@@ -85,7 +83,7 @@
   }
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     width: 100%;
@@ -104,7 +102,6 @@
     display: none;
   }
 }
-
 
 .title > div {
   align-items: center;
@@ -125,8 +122,8 @@
   }
 
   &:before {
-    background-image: url(./assets/title-left.png),url(./assets/title-right.png);
-    background-position: 0 0,100% 0;
+    background-image: url(./assets/title-left.png), url(./assets/title-right.png);
+    background-position: 0 0, 100% 0;
     background-repeat: no-repeat;
     content: "";
     display: block;
@@ -141,18 +138,19 @@
 
 .title > div h1 {
   color: #fff;
-  font-family: Lora,Georgia,serif;
+  font-family: Lora, Georgia, serif;
   font-size: 36px;
   letter-spacing: 1.1666666667px;
   line-height: 1;
   margin: 0 auto;
   position: relative;
   text-align: center;
-  text-shadow: 3.5px 0 0 #321208, 3.23365px 1.33945px 0 #321208, 2.47485px 2.47485px 0 #321208, 1.33945px 3.23365px 0 #321208, 0 3.5px 0 #321208, -1.33945px 3.23365px 0 #321208, -2.47485px 2.47485px 0 #321208, -3.23365px 1.33945px 0 #321208, -3.5px 0 0 #321208, -3.23365px -1.33945px 0 #321208, -2.47485px -2.47485px 0 #321208, -1.33945px -3.23365px 0 #321208, 0 -3.5px 0 #321208, 1.33945px -3.23365px 0 #321208, 2.47485px -2.47485px 0 #321208, 3.23365px -1.33945px 0 #321208;
+  text-shadow:
+    3.5px 0 0 #321208, 3.23365px 1.33945px 0 #321208, 2.47485px 2.47485px 0 #321208, 1.33945px 3.23365px 0 #321208, 0 3.5px 0 #321208, -1.33945px 3.23365px 0 #321208, -2.47485px 2.47485px 0 #321208, -3.23365px 1.33945px 0 #321208, -3.5px 0 0 #321208, -3.23365px -1.33945px 0 #321208, -2.47485px -2.47485px 0 #321208, -1.33945px -3.23365px 0 #321208, 0 -3.5px 0 #321208, 1.33945px -3.23365px 0 #321208, 2.47485px -2.47485px 0 #321208, 3.23365px -1.33945px 0 #321208;
   z-index: 2;
 
   @media (max-width: 768px) {
-      font-size: 20px;
+    font-size: 20px;
   }
 }
 
@@ -173,9 +171,8 @@
   text-align: left;
 
   &:before {
-    background-image: url(./assets/info-light-top-left.png),
-      url(./assets/info-light-top-right.png),url(./assets/info-light-bottom-left.png),
-      url(./assets/info-light-bottom-right.png);
+    background-image: url(./assets/info-light-top-left.png), url(./assets/info-light-top-right.png),
+      url(./assets/info-light-bottom-left.png), url(./assets/info-light-bottom-right.png);
 
     content: "";
     display: block;
@@ -192,9 +189,8 @@
   }
 
   &:after {
-    background-image: url(./assets/info-light-left.png), 
-      url(./assets/info-light-right.png), url(./assets/info-light-top.png),
-      url(./assets/info-light-bottom.png);
+    background-image: url(./assets/info-light-left.png), url(./assets/info-light-right.png),
+      url(./assets/info-light-top.png), url(./assets/info-light-bottom.png);
     content: "";
     display: block;
     height: 100%;
@@ -203,15 +199,14 @@
     position: absolute;
     top: 0;
     width: 100%;
-    background-position: 0,100%,top,bottom;
-    background-repeat: repeat-y,repeat-y,repeat-x,repeat-x;
+    background-position: 0, 100%, top, bottom;
+    background-repeat: repeat-y, repeat-y, repeat-x, repeat-x;
     border-radius: 10px;
     overflow: hidden;
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
   }
 }
-
 
 .headers {
   display: flex;
@@ -263,7 +258,7 @@
 
 .contractName {
   font-weight: 500;
-  font-size:0.8em;
+  font-size: 0.8em;
 }
 
 .addressUrl {
@@ -271,7 +266,7 @@
 }
 
 .contractAddress {
-  font-size:0.8em;
+  font-size: 0.8em;
   color: #744e45;
 }
 
@@ -293,7 +288,7 @@
   flex-direction: column;
   padding-left: 8px;
   justify-content: space-around;
-  width: 182px;;
+  width: 182px;
 }
 
 .revoke {
@@ -308,7 +303,7 @@
   border: 0;
   color: #733e2a;
   display: flex;
-  font-family: Lora,Georgia,serif;
+  font-family: Lora, Georgia, serif;
   font-weight: 700;
   image-rendering: pixelated;
   justify-content: center;
@@ -324,8 +319,8 @@
   padding: 8px;
 
   &:before {
-    background-image: url(./assets/yellow-left.png),url(./assets/yellow-right.png);
-    background-position: 0 0,100% 0;
+    background-image: url(./assets/yellow-left.png), url(./assets/yellow-right.png);
+    background-position: 0 0, 100% 0;
     background-repeat: no-repeat;
     background-size: contain;
     content: "";
@@ -349,7 +344,6 @@
   &:active {
     top: 1px;
   }
-
 }
 
 .revokeButton.disabled {
@@ -363,7 +357,6 @@
   &:active {
     top: 0px;
   }
-
 }
 
 .revokeButton.retry {
@@ -381,7 +374,6 @@
   align-items: center;
 }
 
-
 .tokenName {
   font-weight: 500;
 }
@@ -397,7 +389,7 @@
 }
 
 .left-info-container {
-  font-family: 'Lora', 'Georgia', serif;
+  font-family: "Lora", "Georgia", serif;
   display: flex;
   flex-direction: column;
   height: 42px;
@@ -429,7 +421,7 @@
   width: 250px;
 
   @media (max-width: 768px) {
-    width: 200px; 
+    width: 200px;
   }
 }
 
@@ -439,13 +431,14 @@
   background-repeat: repeat-x;
   border-radius: 20px;
   color: #f9f3ea;
-  font-family: Lora,serif;
+  font-family: Lora, serif;
   font-size: 24px;
   font-weight: 700;
   height: 68px;
   letter-spacing: 1.1666666667px;
   padding: 0 40px;
-  text-shadow: 3.5px 0 0 #321208, 3.23365px 1.33945px 0 #321208, 2.47485px 2.47485px 0 #321208, 1.33945px 3.23365px 0 #321208, 0 3.5px 0 #321208, -1.33945px 3.23365px 0 #321208, -2.47485px 2.47485px 0 #321208, -3.23365px 1.33945px 0 #321208, -3.5px 0 0 #321208, -3.23365px -1.33945px 0 #321208, -2.47485px -2.47485px 0 #321208, -1.33945px -3.23365px 0 #321208, 0 -3.5px 0 #321208, 1.33945px -3.23365px 0 #321208, 2.47485px -2.47485px 0 #321208, 3.23365px -1.33945px 0 #321208;
+  text-shadow:
+    3.5px 0 0 #321208, 3.23365px 1.33945px 0 #321208, 2.47485px 2.47485px 0 #321208, 1.33945px 3.23365px 0 #321208, 0 3.5px 0 #321208, -1.33945px 3.23365px 0 #321208, -2.47485px 2.47485px 0 #321208, -3.23365px 1.33945px 0 #321208, -3.5px 0 0 #321208, -3.23365px -1.33945px 0 #321208, -2.47485px -2.47485px 0 #321208, -1.33945px -3.23365px 0 #321208, 0 -3.5px 0 #321208, 1.33945px -3.23365px 0 #321208, 2.47485px -2.47485px 0 #321208, 3.23365px -1.33945px 0 #321208;
   text-transform: none;
   transition: none;
   white-space: nowrap;
@@ -453,8 +446,8 @@
   width: 100%;
 
   &:before {
-    background-image: url(./assets/btn_left.png),url(./assets/btn_right.png);
-    background-position: 0 0,100% 0;
+    background-image: url(./assets/btn_left.png), url(./assets/btn_right.png);
+    background-position: 0 0, 100% 0;
     background-repeat: no-repeat;
     content: "";
     display: block;
@@ -473,7 +466,7 @@
     background-position: bottom;
 
     &:before {
-      background-position: 0 -68px,100% -68px;
+      background-position: 0 -68px, 100% -68px;
     }
   }
 }
@@ -482,9 +475,8 @@
   background-image: url(./assets/btn_disabled_middle.png);
 
   &:before {
-    background-image: url(./assets/btn_disabled_left.png),url(./assets/btn_disabled_right.png);
+    background-image: url(./assets/btn_disabled_left.png), url(./assets/btn_disabled_right.png);
   }
-
 }
 
 .warning {
@@ -510,7 +502,6 @@
   }
 }
 
-
 /* -------------- */
 /* Mobile Styling */
 /* -------------- */
@@ -535,7 +526,6 @@
   .tokenLogo {
     position: relative;
     top: 15px;
-
   }
 
   .right {
@@ -571,7 +561,6 @@
   .revoke {
     margin: 0px;
   }
-
 }
 
 @media (max-width: 420px) {
@@ -617,8 +606,8 @@
 
   background-color: orange;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; 
-  background-color: rgb(243, 132, 30); 
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+  background-color: rgb(243, 132, 30);
   border: 1px solid rgb(243, 132, 30);
   border-radius: 0px 0px 5px 5px;
 
@@ -644,15 +633,14 @@
 }
 
 .walletInfoButton {
-  background-color: #6db75c;
   padding: 12px 32px;
   /* color: white; */
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   border-radius: 15px;
   /* border: none; */
   border: 1px solid #91d565;
-  background: rgba(0,0,0,.488) 0 0 no-repeat padding-box;
+  background: rgba(0, 0, 0, 0.488) 0 0 no-repeat padding-box;
   color: #91d565;
   width: 150px;
   cursor: pointer;
@@ -675,7 +663,6 @@
     font-size: 12px;
     width: 120px;
   }
-
 }
 
 .social-icon {
