@@ -1,6 +1,6 @@
 export type APIReturnData = {
   items: APITokenData[]
-  count: 0
+  count: number
   countType: 'exact' | 'lowerBound' | 'approx'
   link: {
     next: string
@@ -13,9 +13,9 @@ export type APIReturnData = {
 export type APITokenData = {
   chainId: string
   timestamp: string
-  blockNumber: 0
+  blockNumber: number
   txHash: string
-  logIndex: 0
+  logIndex: number
   owner: {
     id: string
     alias: string
@@ -38,16 +38,16 @@ export type APITokenData = {
       },
     ]
   }
-  spender: Spender
+  spender: APISpender
   allowance: string
   currentAllowance: string
   tokenAddress: string
   tokenName: string
   tokenSymbol: string
-  tokenDecimals: 0
+  tokenDecimals: number
 }
 
-export type Spender = {
+export type APISpender = {
   id: string
   alias: string
   owner: string
@@ -68,4 +68,22 @@ export type Spender = {
       name: string
     },
   ]
+}
+
+export type TokenData = {
+  chainId: string
+  tokenAddress: string
+  tokenName: string
+  tokenSymbol: string
+  tokenDecimals: number
+  spenders: Spender[]
+}
+
+export type Spender = {
+  spenderAddress: string
+  timestamp: string
+  blockNumber: number
+  txHash: string
+  allowance: string
+  currentAllowance: string
 }

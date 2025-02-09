@@ -1,8 +1,8 @@
-import type { APITokenData } from '../types.js'
+import type { TokenData } from '../types.js'
 import { parseTokenInfo } from '../utils/tokenInfo.js'
 import { truncateEthAddress } from '../utils/truncateEthAddress.js'
 
-const Token = ({ tokenItem }: { tokenItem: APITokenData }) => {
+const Token = ({ tokenItem }: { tokenItem: TokenData }) => {
   const tokenInfo = parseTokenInfo(tokenItem.tokenAddress)
 
   return (
@@ -13,16 +13,10 @@ const Token = ({ tokenItem }: { tokenItem: APITokenData }) => {
           <img className="tokenLogo" src={tokenInfo.logo} alt="tokenlogo" />
         </div>
 
-        {/* Render Token Name & Balance */}
+        {/* Render Token Name & Symvol */}
         <div className="left-info-container">
-          {/* <div className='tokenName'>{tokenItem.token_address_label}</div> */}
           <div className="tokenName">{tokenInfo.contractAddress === '' ? tokenItem.tokenName : tokenInfo.name}</div>
-          <div className="tokenBalance">
-            {/* {tokenItem.tokenDecimals === 0
-              ? Number(tokenItem.balance)
-              : (Number(tokenItem.balance) / 10 ** tokenItem.tokenDecimals).toFixed(3)}{' '} */}
-            {tokenItem.tokenSymbol}
-          </div>
+          <div className="tokenBalance">{tokenItem.tokenSymbol}</div>
         </div>
       </div>
 

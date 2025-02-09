@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import '../App.css'
-import type { APIReturnData, APITokenData } from '../types.js'
+import type { TokenData } from '../types.js'
 import TokenAllowance from './TokenAllowance.js'
+import { buildTokenData } from '../utils/buildTokenData.js'
 
 const HandleData = ({ accountAddress }: { accountAddress: string }) => {
-  const [data, setData] = useState<APITokenData[] | null>(null)
+  const [data, setData] = useState<TokenData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
@@ -21,11 +22,14 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
       .get(approvalsEndpoint)
       .then(res => {
         console.log(res)
-        setData(res.data.items)
+        const tokenData = buildTokenData(res.data.items)
+        console.log({ tokenData })
+        setData(tokenData)
         setLoading(false)
         setError(false)
       })
       .catch(error => {
+        console.error(error)
         setError(true)
         setLoading(false)
       })
@@ -65,10 +69,10 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
               </div>
               <p>Loading Token Approvals...</p>
             </div>
-          ) : data?.length === 0 ? (
+          ) : data.length === 0 ? (
             <div className="loading">No token approvals found.</div>
           ) : (
-            data?.map((item, i) => {
+            data.map((item, i) => {
               return (
                 <TokenAllowance
                   key={`${item.tokenAddress}-${i}`}

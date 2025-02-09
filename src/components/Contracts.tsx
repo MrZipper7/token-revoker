@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { ethers } from 'ethers'
 import { ModalContext } from '../context/ModalContext.js'
-import type { APITokenData, Spender } from '../types.js'
+import type { TokenData, Spender } from '../types.js'
 import { parseTokenInfo } from '../utils/tokenInfo.js'
 import { truncateEthAddress } from '../utils/truncateEthAddress.js'
 
@@ -14,13 +14,13 @@ const abi = [
 ]
 
 interface ContractsProps {
-  spenders: Spender
-  token: APITokenData
+  spenders: Spender[]
+  token: TokenData
   walletAddress: string
 }
 
 const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
-  const [rows, setRows] = useState([spenders])
+  const [rows, setRows] = useState(spenders)
   const [disabledRows, setDisabledRows] = useState<boolean[]>([])
   const { setShowPending } = useContext(ModalContext)
 
@@ -61,28 +61,28 @@ const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
         {rows.map((item, index) => {
           const isRowDisabled = disabledRows[index]
           return (
-            <div className="allowanceRow" key={`${item.id.slice(0, 8)}-${index}`}>
+            <div className="allowanceRow" key={`${item.spenderAddress.slice(0, 8)}-${index}`}>
               <div className="contract">
-                <div className="contractName">{parseTokenInfo(item.id).name}</div>
+                <div className="contractName">{parseTokenInfo(item.spenderAddress).name}</div>
                 <a
                   className="addressUrl"
-                  href={`https://subnets.avax.network/defi-kingdoms/address/${item.id}`}
+                  href={`https://subnets.avax.network/defi-kingdoms/address/${item.spenderAddress}`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <div className="contractAddress">
                     <img className="scroll" src="../scroll_bkmays.svg" alt="scroll" width="12px" />{' '}
-                    {truncateEthAddress(item.id)}
+                    {truncateEthAddress(item.spenderAddress)}
                   </div>
                 </a>
               </div>
 
               <div className="allowance">
                 {/* {token.allowance === "UNLIMITED" ? "Unlimited" : token.allowance} */}
-                {token.allowance === 'UNLIMITED' ? 'Unlimited' : Number(token.allowance) / 10 ** token.tokenDecimals}
+                {item.allowance === 'UNLIMITED' ? 'Unlimited' : Number(item.allowance) / 10 ** token.tokenDecimals}
               </div>
 
-              <div className="dateApproved">{token.timestamp.slice(0, 10)}</div>
+              <div className="dateApproved">{item.timestamp.slice(0, 10)}</div>
 
               <div className="revoke">
                 <button
@@ -90,7 +90,7 @@ const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
                   className={`revokeButton ${isRowDisabled ? 'disabled' : ''}`}
                   disabled={isRowDisabled}
                   onClick={() => {
-                    handleRevoke(item.id, index)
+                    handleRevoke(item.spenderAddress, index)
                   }}
                 >
                   Revoke
