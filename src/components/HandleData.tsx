@@ -1,64 +1,29 @@
-import { useState, useEffect, useCallback } from 'react'
-import axios from 'axios'
 import '../App.css'
-import type { TokenData } from '../types.js'
 import TokenAllowance from './TokenAllowance.js'
-import { buildTokenData } from '../utils/buildTokenData.js'
+import { useFetchApprovalData } from '../hooks/useFetchApprovalData.js'
 
 const HandleData = ({ accountAddress }: { accountAddress: string }) => {
-  const [data, setData] = useState<TokenData[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const { data, isLoading, isError, hasNextPage, hasPrevPage, fetchNextPage, fetchPrevPage, refetch } =
+    useFetchApprovalData(accountAddress)
 
-  const fetchData = useCallback(async () => {
-    setLoading(true)
-    const approvalsEndpoint = `https://api.routescan.io/v2/network/mainnet/evm/53935/address/${accountAddress}/erc20-approvals?limit=100`
-    // const config = {
-    //   headers: {
-    //     "Authorization": `Bearer ${import.meta.env.REACT_APP_APIKEY}`
-    //   }
-    // }
-    axios
-      .get(approvalsEndpoint)
-      .then(res => {
-        console.log(res)
-        const tokenData = buildTokenData(res.data.items)
-        console.log({ tokenData })
-        setData(tokenData)
-        setLoading(false)
-        setError(false)
-      })
-      .catch(error => {
-        console.error(error)
-        setError(true)
-        setLoading(false)
-      })
-  }, [accountAddress])
-
-  useEffect(() => {
-    fetchData()
-  }, [fetchData])
-
-  const retryFetch = () => {
-    setError(false)
-    setLoading(true)
-    fetchData()
+  function handleRefetch() {
+    refetch()
   }
 
   return (
     <>
-      {error ? (
+      {isError ? (
         <div className="loading">
           <p>
             <strong>Something went wrong. Please refresh and try again.</strong>
           </p>
-          <button type={'submit'} className="revokeButton retry" onClick={retryFetch}>
+          <button type={'submit'} className="revokeButton retry" onClick={handleRefetch}>
             Retry
           </button>
         </div>
       ) : (
         <>
-          {loading ? (
+          {isLoading ? (
             <div className="loading">
               <div className="imageContainer">
                 <img
@@ -72,15 +37,39 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
           ) : data.length === 0 ? (
             <div className="loading">No token approvals found.</div>
           ) : (
-            data.map((item, i) => {
-              return (
+            <>
+              <div className="pagination">
+                {hasPrevPage && (
+                  <button type="button" onClick={fetchPrevPage} disabled={isLoading}>
+                    Previous Page
+                  </button>
+                )}
+                {hasNextPage && (
+                  <button type="button" onClick={fetchNextPage} disabled={isLoading}>
+                    Next Page
+                  </button>
+                )}
+              </div>
+              {data.map((item, i) => (
                 <TokenAllowance
                   key={`${item.tokenAddress}-${i}`}
                   tokenItem={item}
                   queryWalletAddress={accountAddress}
                 />
-              )
-            })
+              ))}
+              <div className="pagination">
+                {hasPrevPage && (
+                  <button type="button" onClick={fetchPrevPage} disabled={isLoading}>
+                    Previous Page
+                  </button>
+                )}
+                {hasNextPage && (
+                  <button type="button" onClick={fetchNextPage} disabled={isLoading}>
+                    Next Page
+                  </button>
+                )}
+              </div>
+            </>
           )}
         </>
       )}
