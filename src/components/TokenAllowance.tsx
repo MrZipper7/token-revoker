@@ -1,8 +1,14 @@
 import '../App.css'
-import Contracts from './Contracts'
-import Token from './Token'
+import type { APITokenData } from '../types.js'
+import Contracts from './Contracts.jsx'
+import Token from './Token.jsx'
 
-const TokenAllowance = ({ tokenItem, queryWalletAddress }) => {
+interface TokenAllowanceProps {
+  tokenItem: APITokenData
+  queryWalletAddress: string
+}
+
+const TokenAllowance = ({ tokenItem, queryWalletAddress }: TokenAllowanceProps) => {
   return (
     <>
       <div className="tokenContainer">
@@ -13,12 +19,7 @@ const TokenAllowance = ({ tokenItem, queryWalletAddress }) => {
           <div className="header-date-approved">Date Approved</div>
           <div className="header-revoke">Revoke</div>
         </div>
-        <Contracts
-          key={tokenItem.tokenName}
-          spenders={tokenItem.spender}
-          token={tokenItem}
-          queryWalletAddress={queryWalletAddress}
-        />
+        <Contracts spenders={tokenItem.spender} token={tokenItem} walletAddress={queryWalletAddress} />
       </div>
     </>
   )

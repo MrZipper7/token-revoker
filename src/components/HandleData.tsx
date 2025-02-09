@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import TokenAllowance from './TokenAllowance'
+import type { APIReturnData, APITokenData } from '../types.js'
+import TokenAllowance from './TokenAllowance.js'
 
-const HandleData = ({ accountAddress }) => {
-  const [data, setData] = useState(null)
+const HandleData = ({ accountAddress }: { accountAddress: string }) => {
+  const [data, setData] = useState<APITokenData[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
@@ -65,10 +66,10 @@ const HandleData = ({ accountAddress }) => {
               </div>
               <p>Loading Token Approvals...</p>
             </div>
-          ) : data.length === 0 ? (
+          ) : data?.length === 0 ? (
             <div className="loading">No token approvals found.</div>
           ) : (
-            data.map((item, i) => {
+            data?.map((item, i) => {
               return (
                 <TokenAllowance
                   key={`${item.tokenAddress}-${i}`}

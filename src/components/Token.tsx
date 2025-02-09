@@ -1,7 +1,8 @@
-import { parseTokenInfo } from '../utils/tokenInfo'
-import { truncateEthAddress } from '../utils/truncateEthAddress'
+import type { APITokenData } from '../types.js'
+import { parseTokenInfo } from '../utils/tokenInfo.js'
+import { truncateEthAddress } from '../utils/truncateEthAddress.js'
 
-const Token = ({ tokenItem }) => {
+const Token = ({ tokenItem }: { tokenItem: APITokenData }) => {
   const tokenInfo = parseTokenInfo(tokenItem.tokenAddress)
 
   return (
@@ -15,9 +16,7 @@ const Token = ({ tokenItem }) => {
         {/* Render Token Name & Balance */}
         <div className="left-info-container">
           {/* <div className='tokenName'>{tokenItem.token_address_label}</div> */}
-          <div className="tokenName">
-            {tokenInfo.contractAddress === '' ? tokenItem.tokenName : tokenInfo.name}
-          </div>
+          <div className="tokenName">{tokenInfo.contractAddress === '' ? tokenItem.tokenName : tokenInfo.name}</div>
           <div className="tokenBalance">
             {/* {tokenItem.tokenDecimals === 0
               ? Number(tokenItem.balance)

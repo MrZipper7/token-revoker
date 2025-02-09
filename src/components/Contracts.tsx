@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { ethers } from 'ethers'
-import { ModalContext } from '../context/ModalContext'
-import { parseTokenInfo } from '../utils/tokenInfo'
-import { truncateEthAddress } from '../utils/truncateEthAddress'
+import { ModalContext } from '../context/ModalContext.js'
+import type { APITokenData, Spender } from '../types.js'
+import { parseTokenInfo } from '../utils/tokenInfo.js'
+import { truncateEthAddress } from '../utils/truncateEthAddress.js'
 
 const abi = [
   'function name() public view returns (string)',
@@ -12,12 +13,18 @@ const abi = [
   'function approve(address _spender, uint256 _value) public returns (bool success)',
 ]
 
-const Contracts = ({ spenders, token, walletAddress }) => {
+interface ContractsProps {
+  spenders: Spender
+  token: APITokenData
+  walletAddress: string
+}
+
+const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
   const [rows, setRows] = useState([spenders])
-  const [disabledRows, setDisabledRows] = useState([])
+  const [disabledRows, setDisabledRows] = useState<boolean[]>([])
   const { setShowPending } = useContext(ModalContext)
 
-  const handleRevoke = async (spenderAddress, key) => {
+  const handleRevoke = async (spenderAddress: string, key: number) => {
     // Disable the button in the clicked on row
     let updateDisabledRows = [...disabledRows]
     updateDisabledRows[key] = true
@@ -52,7 +59,6 @@ const Contracts = ({ spenders, token, walletAddress }) => {
     <>
       <div className="allowanceRowContainer">
         {rows.map((item, index) => {
-          console.log(item)
           const isRowDisabled = disabledRows[index]
           return (
             <div className="allowanceRow" key={index}>
