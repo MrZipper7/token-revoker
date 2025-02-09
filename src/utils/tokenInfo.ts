@@ -2,15 +2,13 @@ const defaultLogo = '../icons8-question-mark-78.png'
 
 const parseTokenInfo = (address: string) => {
   const token = tokenInfo.find(item => item.contractAddress.toLowerCase() === address.toLowerCase())
-  return token ? token : getDefaultToken()
-}
-
-const getDefaultToken = () => {
-  return {
-    contractAddress: '',
-    name: 'Unknown Contract',
-    logo: defaultLogo,
-  }
+  return token
+    ? token
+    : {
+        contractAddress: '',
+        name: 'Unknown Contract',
+        logo: defaultLogo,
+      }
 }
 
 const tokenInfo = [
@@ -46,6 +44,16 @@ const tokenInfo = [
     logo: '',
   },
   {
+    contractAddress: '0xB04e8D6aED037904B77A9F0b08002592925833b7',
+    name: 'LP Staking',
+    logo: '',
+  },
+  {
+    contractAddress: '0x530fff22987E137e7C8D2aDcC4c15eb45b4FA752',
+    name: 'QuestCore V3',
+    logo: '',
+  },
+  {
     contractAddress: '0x75224b0f245Fe51d5bf47A898DbB6720D4150BA7',
     name: 'Token Bridge (Synapse)',
     logo: 'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/53935/contracts/0xE05c976d3f045D0E6E7A6f61083d98A15603cF6A/logo.png',
@@ -53,6 +61,11 @@ const tokenInfo = [
   {
     contractAddress: '0x501CdC4ef10b63219704Bf6aDb785dfccb06deE2',
     name: 'Item Bridge (LayerZero)',
+    logo: '',
+  },
+  {
+    contractAddress: '0x409E6CDE3119584074E162dcCC6C86433251C36f',
+    name: 'Item Bridge V2 (LayerZero)',
     logo: '',
   },
   {
@@ -118,6 +131,11 @@ const tokenInfo = [
   {
     contractAddress: '0xc9A9F352Aa188f422A8f8902B547FB3E59D37210',
     name: 'Item Consumer',
+    logo: '',
+  },
+  {
+    contractAddress: '0x6755dEBef85929aC4cd541c81147Bc17C4F0CD0e',
+    name: 'Potion Migrator',
     logo: '',
   },
   {
@@ -192,7 +210,7 @@ const tokenInfo = [
   },
   {
     contractAddress: '0x4297531f246C5DaF65726F44889B960FaEf81ECE',
-    name: 'DFK Duel S7+',
+    name: 'DFK Duel S999',
     logo: '',
   },
 
@@ -230,7 +248,7 @@ const tokenInfo = [
   {
     contractAddress: '0xfBDF0E31808d0aa7b9509AA6aBC9754E48C58852',
     name: 'Ethereum (ETH)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/43114/contracts/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png',
+    logo: 'https://images.ctfassets.net/gcj8jwzm6086/65a97cd3-67e3-424a-b278-0744bd6f2dd6/9e925614abed5080ecc2e177e4c35229/43114-0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15.png',
   },
   {
     contractAddress: '0x97855Ba65aa7ed2F65Ed832a776537268158B78a',
@@ -513,48 +531,123 @@ const tokenInfo = [
   },
   {
     contractAddress: '0x84246Ce3988742D46fC00d9b8b2AFb5CDBDaE660',
+    name: 'Swiftness Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-swiftness-potion.png',
+  },
+  {
+    contractAddress: '0x591853e01EcFDcF1Bdc9f093423C197BfBBd1A4f',
+    name: 'Health Vial Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-health-vial.png',
+  },
+  {
+    contractAddress: '0x5948dd8Df6afEFE05B033AD8f3ae513a9Cd4F1Dc',
+    name: 'Full Health Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-full-health.png',
+  },
+  {
+    contractAddress: '0x449eB718e351a86718A090A1a8Db3FD561306d9b',
+    name: 'Anti-Poison Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-anti-poison.png',
+  },
+  {
+    contractAddress: '0x2dfFf745d2c7ddCAD4E97b80DF33705B1a95A172',
+    name: 'Toughness Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-toughness-potion.png',
+  },
+  {
+    contractAddress: '0x240da5314B05E84392e868aC8f2b80ad6becadd4',
+    name: 'Mana Vial Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-mana-vial.png',
+  },
+  {
+    contractAddress: '0xf17FD21bDF6713a1Dfed668b97835b21e32651e8',
+    name: 'Full Mana Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-full-mana.png',
+  },
+  {
+    contractAddress: '0xFADCb72aAE2713975a890b59FF47231D1A552De3',
+    name: 'Magic Resistance Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-magic-resistance-potion.png',
+  },
+  {
+    contractAddress: '0x5986045e7c221c8AD40A736B6434D82E29687aeB',
+    name: 'Anti-Blinding Potion Crate',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/crate-anti-blindness-potion.png',
+  },
+  {
+    contractAddress: '0x1Ae5c72601AAF4C67C6a6004C4C2788D9EB5510C',
     name: 'Swiftness Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/swiftness-potion.png',
   },
   {
-    contractAddress: '0x591853e01EcFDcF1Bdc9f093423C197BfBBd1A4f',
+    contractAddress: '0xc974f3f154FD19C8D03F6dbbA1775129f93c80cb',
     name: 'Health Vial',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/health-potion.png',
   },
   {
-    contractAddress: '0x5948dd8Df6afEFE05B033AD8f3ae513a9Cd4F1Dc',
+    contractAddress: '0xA0c2Fbbb3f52bCbCAb2600322a6fBC2653518E00',
     name: 'Full Health Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/health-potion-large.png',
   },
   {
-    contractAddress: '0x449eB718e351a86718A090A1a8Db3FD561306d9b',
+    contractAddress: '0x84B252A4930A3656a469c6b360FcBEE991D555Bd',
     name: 'Anti-Poison Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/antipoison-potion.png',
   },
   {
-    contractAddress: '0x2dfFf745d2c7ddCAD4E97b80DF33705B1a95A172',
+    contractAddress: '0x79d656A96139ED23CDf531d0dC34c000A0979c03',
     name: 'Toughness Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/toughness-potion.png',
   },
   {
-    contractAddress: '0x240da5314B05E84392e868aC8f2b80ad6becadd4',
+    contractAddress: '0xBb9dEdfD96234315dD4899b438f9C41cD75dFdc6',
     name: 'Mana Vial',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/mana-potion.png',
   },
   {
-    contractAddress: '0xf17FD21bDF6713a1Dfed668b97835b21e32651e8',
+    contractAddress: '0x27bdc0f62DA17b13Cb134102dEf58dD9d578Ee10',
     name: 'Full Mana Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/mana-potion-large.png',
   },
   {
-    contractAddress: '0xFADCb72aAE2713975a890b59FF47231D1A552De3',
+    contractAddress: '0x4ED3e1b8D1212b2839dBB1f0EFA029792d92c90f',
     name: 'Magic Resistance Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/magic-resist-potion.png',
   },
   {
-    contractAddress: '0x5986045e7c221c8AD40A736B6434D82E29687aeB',
+    contractAddress: '0xe6Fd594437c4B91e8bd36475977593C98Bf089a4',
     name: 'Anti-Blinding Potion',
     logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/blindness-potion.png',
+  },
+  {
+    contractAddress: '0x52D8cac705430eaBd746e2bFdD7993333b6A3A07',
+    name: 'Smoke Bomb',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/smoke-bomb.png',
+  },
+  {
+    contractAddress: '0x64c4d448156d872D607605Aa091dC2786c813aF3',
+    name: 'Coagulant Potion',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/coagulant-potion.png',
+  },
+  {
+    contractAddress: '0x59dbaaDd45ba040610DbDefb85C9c33A0470a393',
+    name: 'Precision Potion',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/precision-potion.png',
+  },
+  {
+    contractAddress: '0x4055A5492e105D45526f7Aa350B00987ed0C7F4f',
+    name: 'Spell Potion',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/spell-potion.png',
+  },
+  {
+    contractAddress: '0x1f59e7b0e0a350E1888c452D013B2bD2Cc763940',
+    name: 'Attack Potion',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/attack-potion.png',
+  },
+  {
+    contractAddress: '0xd108B49Bb42817330201de3720d1300169020A5E',
+    name: 'Purify Potion',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/items/purify-potion.png',
   },
   {
     contractAddress: '0x3A28E0D4eCF7558e1ba7357070032C5A6105B0C2',
