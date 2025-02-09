@@ -1,10 +1,11 @@
-import { useState, useEffect, useContext, useCallback } from 'react'
-import './App.css'
-import HandleData from './components/HandleData.jsx'
-import PendingModal from './components/PendingModal.jsx'
-import WalletInfo from './components/WalletInfo.jsx'
-import { ModalContext } from './context/ModalContext.jsx'
-import useWalletConnect from './hooks/useWalletConnect.js'
+import { useCallback, useContext, useEffect, useState } from 'react'
+
+import HandleData from 'components/HandleData'
+import PendingModal from 'components/PendingModal'
+import WalletInfo from 'components/WalletInfo'
+import { ModalContext } from 'context/ModalContext'
+import useWalletConnect from 'hooks/useWalletConnect'
+import 'App.css'
 
 function App() {
   const [haveMetamask, sethaveMetamask] = useState(false)

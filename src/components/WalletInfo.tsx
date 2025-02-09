@@ -1,8 +1,9 @@
-import { useState, useEffect, useContext } from 'react'
-import '../App.css'
-import { ModalContext } from '../context/ModalContext.js'
-import useWalletConnect from '../hooks/useWalletConnect.js'
-import { truncateEthAddress } from '../utils/truncateEthAddress.js'
+import { useContext, useEffect, useState } from 'react'
+
+import { ModalContext } from 'context/ModalContext'
+import useWalletConnect from 'hooks/useWalletConnect'
+import { truncateEthAddress } from 'utils/truncateEthAddress'
+import 'App.css'
 
 const WalletInfo = () => {
   const { isConnected, setIsConnected, accountAddress } = useContext(ModalContext)

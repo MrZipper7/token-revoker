@@ -1,4 +1,4 @@
-import type { APITokenData, Spender, TokenData } from '../types.js'
+import type { APITokenData, Spender, TokenData } from 'types'
 
 export function buildTokenData(tokenInfo: APITokenData[]): TokenData[] {
   return tokenInfo.reduce<TokenData[]>((acc, t) => {

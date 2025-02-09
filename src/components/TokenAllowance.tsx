@@ -1,7 +1,7 @@
-import '../App.css'
-import type { TokenData } from '../types.js'
-import Contracts from './Contracts.jsx'
-import Token from './Token.jsx'
+import type { TokenData } from 'types'
+import Contracts from './Contracts'
+import Token from './Token'
+import 'App.css'
 
 interface TokenAllowanceProps {
   tokenItem: TokenData

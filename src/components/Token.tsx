@@ -1,6 +1,6 @@
-import type { TokenData } from '../types.js'
-import { parseTokenInfo } from '../utils/tokenInfo.js'
-import { truncateEthAddress } from '../utils/truncateEthAddress.js'
+import type { TokenData } from 'types'
+import { parseTokenInfo } from 'utils/tokenInfo'
+import { truncateEthAddress } from 'utils/truncateEthAddress'
 
 const Token = ({ tokenItem }: { tokenItem: TokenData }) => {
   const tokenInfo = parseTokenInfo(tokenItem.tokenAddress)

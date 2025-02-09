@@ -1,9 +1,10 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import App from './App.jsx'
-import { ModalProvider } from './context/ModalContext.jsx'
-import './index.css'
+
+import App from 'App'
+import { ModalProvider } from 'context/ModalContext'
+import 'index.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {

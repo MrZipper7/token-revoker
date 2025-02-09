@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react'
 import { ethers } from 'ethers'
-import { MAX_ALLOWANCE } from '../constants/index.js'
-import { ModalContext } from '../context/ModalContext.js'
-import type { TokenData, Spender } from '../types.js'
-import { parseTokenInfo } from '../utils/tokenInfo.js'
-import { truncateEthAddress } from '../utils/truncateEthAddress.js'
+import { useContext, useState } from 'react'
+
+import { MAX_ALLOWANCE } from 'constants/index'
+import { ModalContext } from 'context/ModalContext'
+import type { Spender, TokenData } from 'types'
+import { parseTokenInfo } from 'utils/tokenInfo'
+import { truncateEthAddress } from 'utils/truncateEthAddress'
 
 const abi = [
   'function name() public view returns (string)',

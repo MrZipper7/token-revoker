@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
 import axios from 'axios'
-import type { APIReturnData } from '../types.ts'
-import { buildTokenData } from '../utils/buildTokenData.js'
+import { useState } from 'react'
+
+import type { APIReturnData } from 'types'
+import { buildTokenData } from 'utils/buildTokenData'
 
 type PaginationDirection = 'next' | 'prev' | null
 

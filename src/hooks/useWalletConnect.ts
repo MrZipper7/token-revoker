@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { ModalContext } from '../context/ModalContext.jsx'
+
+import { ModalContext } from 'context/ModalContext'
 
 const useWalletConnect = () => {
   const { ethereum } = window

@@ -1,6 +1,6 @@
-import '../App.css'
-import TokenAllowance from './TokenAllowance.js'
-import { useFetchApprovalData } from '../hooks/useFetchApprovalData.js'
+import { useFetchApprovalData } from 'hooks/useFetchApprovalData'
+import TokenAllowance from './TokenAllowance'
+import 'App.css'
 
 const HandleData = ({ accountAddress }: { accountAddress: string }) => {
   const { data, isLoading, isError, hasNextPage, hasPrevPage, fetchNextPage, fetchPrevPage, refetch } =
