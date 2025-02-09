@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { ethers } from 'ethers'
+import { MAX_ALLOWANCE } from '../constants/index.js'
 import { ModalContext } from '../context/ModalContext.js'
 import type { TokenData, Spender } from '../types.js'
 import { parseTokenInfo } from '../utils/tokenInfo.js'
@@ -78,8 +79,7 @@ const Contracts = ({ spenders, token, walletAddress }: ContractsProps) => {
               </div>
 
               <div className="allowance">
-                {/* {token.allowance === "UNLIMITED" ? "Unlimited" : token.allowance} */}
-                {item.allowance === 'UNLIMITED' ? 'Unlimited' : Number(item.allowance) / 10 ** token.tokenDecimals}
+                {item.allowance === MAX_ALLOWANCE ? 'Unlimited' : Number(item.allowance) / 10 ** token.tokenDecimals}
               </div>
 
               <div className="dateApproved">{item.timestamp.slice(0, 10)}</div>
