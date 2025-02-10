@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { ModalContext } from 'context/ModalContext'
 
-const useWalletConnect = () => {
+export function useWalletConnect() {
   const { ethereum } = window
   const dfkChainId = '0xd2af'
   const { setIsConnected, setAccountAddress, isCorrectNetwork } = useContext(ModalContext)
@@ -51,5 +51,3 @@ const useWalletConnect = () => {
     switchChain,
   }
 }
-
-export default useWalletConnect

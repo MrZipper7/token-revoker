@@ -2,7 +2,7 @@ import type { TokenData } from 'types'
 import { parseTokenInfo } from 'utils/tokenInfo'
 import { truncateEthAddress } from 'utils/truncateEthAddress'
 
-const Token = ({ tokenItem }: { tokenItem: TokenData }) => {
+export function Token({ tokenItem }: { tokenItem: TokenData }) {
   const tokenInfo = parseTokenInfo(tokenItem.tokenAddress)
 
   return (
@@ -37,5 +37,3 @@ const Token = ({ tokenItem }: { tokenItem: TokenData }) => {
     </div>
   )
 }
-
-export default Token

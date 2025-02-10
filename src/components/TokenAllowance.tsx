@@ -1,13 +1,13 @@
 import type { TokenData } from 'types'
-import Contracts from './Contracts'
-import Token from './Token'
+import { Contracts } from './Contracts'
+import { Token } from './Token'
 import 'App.css'
 
 interface TokenAllowanceProps {
   tokenItem: TokenData
 }
 
-const TokenAllowance = ({ tokenItem }: TokenAllowanceProps) => {
+export function TokenAllowance({ tokenItem }: TokenAllowanceProps) {
   return (
     <>
       <div className="tokenContainer">
@@ -27,5 +27,3 @@ const TokenAllowance = ({ tokenItem }: TokenAllowanceProps) => {
     </>
   )
 }
-
-export default TokenAllowance

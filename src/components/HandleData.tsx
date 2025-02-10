@@ -1,8 +1,12 @@
+import { useContext } from 'react'
+
+import { ModalContext } from 'context/ModalContext'
 import { useFetchApprovalData } from 'hooks/useFetchApprovalData'
-import TokenAllowance from './TokenAllowance'
+import { TokenAllowance } from './TokenAllowance'
 import 'App.css'
 
-const HandleData = ({ accountAddress }: { accountAddress: string }) => {
+export function HandleData() {
+  const { accountAddress } = useContext(ModalContext)
   const { data, isLoading, isError, hasNextPage, hasPrevPage, fetchNextPage, fetchPrevPage, refetch } =
     useFetchApprovalData(accountAddress)
 
@@ -72,5 +76,3 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
     </>
   )
 }
-
-export default HandleData

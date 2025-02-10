@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 
 import { ModalContext } from 'context/ModalContext'
-import useWalletConnect from 'hooks/useWalletConnect'
+import { useWalletConnect } from 'hooks/useWalletConnect'
 import { truncateEthAddress } from 'utils/truncateEthAddress'
 import 'App.css'
 
-const WalletInfo = () => {
+export function WalletInfo() {
   const { isConnected, setIsConnected, accountAddress } = useContext(ModalContext)
   const [buttonText, setButtonText] = useState('')
   const { connectWallet } = useWalletConnect()
@@ -42,5 +42,3 @@ const WalletInfo = () => {
     </div>
   )
 }
-
-export default WalletInfo

@@ -1,6 +1,6 @@
 import 'App.css'
 
-const PendingModal = () => {
+export function PendingModal() {
   return (
     <div className="pendingWrapper">
       <div className="pendingInner">
@@ -25,5 +25,3 @@ const PendingModal = () => {
     </div>
   )
 }
-
-export default PendingModal

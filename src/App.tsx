@@ -1,16 +1,15 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
 
-import HandleData from 'components/HandleData'
-import PendingModal from 'components/PendingModal'
-import WalletInfo from 'components/WalletInfo'
+import { HandleData } from 'components/HandleData'
+import { PendingModal } from 'components/PendingModal'
+import { WalletInfo } from 'components/WalletInfo'
 import { ModalContext } from 'context/ModalContext'
-import useWalletConnect from 'hooks/useWalletConnect'
+import { useWalletConnect } from 'hooks/useWalletConnect'
 import 'App.css'
 
-function App() {
+export function App() {
   const [haveMetamask, sethaveMetamask] = useState(false)
   const { connectWallet } = useWalletConnect()
-  const { accountAddress } = useContext(ModalContext)
   const { isConnected, setIsConnected } = useContext(ModalContext)
   const { isCorrectNetwork, setIsCorrectNetwork } = useContext(ModalContext)
   const { showPending } = useContext(ModalContext)
@@ -82,12 +81,12 @@ function App() {
               {haveMetamask ? (
                 <>
                   {isConnected && isCorrectNetwork ? (
-                    <HandleData accountAddress={accountAddress} />
+                    <HandleData />
                   ) : (
                     <>
                       <p>Connect your wallet to continue.</p>
                       <div className="button-wrapper">
-                        <button className="fancyButton active" type={'submit'} onClick={handleConnectWallet}>
+                        <button className="fancyButton active" type={'button'} onClick={handleConnectWallet}>
                           Connect
                         </button>
                       </div>
@@ -134,5 +133,3 @@ function App() {
     </>
   )
 }
-
-export default App

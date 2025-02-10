@@ -11,7 +11,7 @@ interface ContractsProps {
   item: Spender
 }
 
-const Contracts = ({ token, item }: ContractsProps) => {
+export function Contracts({ token, item }: ContractsProps) {
   const { handleRevoke, isLoading } = useRevokeApproval()
 
   return (
@@ -52,5 +52,3 @@ const Contracts = ({ token, item }: ContractsProps) => {
     </div>
   )
 }
-
-export default Contracts
