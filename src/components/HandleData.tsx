@@ -1,5 +1,6 @@
-import { useContext } from 'react'
+import { Fragment, useContext } from 'react'
 
+import { NFT_CONTRACTS } from 'constants/index'
 import { ModalContext } from 'context/ModalContext'
 import { useFetchApprovalData } from 'hooks/useFetchApprovalData'
 import { TokenAllowance } from './TokenAllowance'
@@ -7,7 +8,7 @@ import 'App.css'
 
 export function HandleData() {
   const { accountAddress } = useContext(ModalContext)
-  const { data, isLoading, isError, hasNextPage, hasPrevPage, fetchNextPage, fetchPrevPage, refetch } =
+  const { data, isLoading, isError, hasNextPage, fetchNextPage, isFetchingNextPage, refetch } =
     useFetchApprovalData(accountAddress)
 
   function handleRefetch() {
@@ -38,33 +39,23 @@ export function HandleData() {
               </div>
               <p>Loading Token Approvals...</p>
             </div>
-          ) : data.length === 0 ? (
+          ) : data?.pages.length === 0 ? (
             <div className="loading">No token approvals found.</div>
           ) : (
             <>
-              <div className="pagination">
-                {hasPrevPage && (
-                  <button type="button" onClick={fetchPrevPage} disabled={isLoading}>
-                    Previous Page
-                  </button>
-                )}
-                {hasNextPage && (
-                  <button type="button" onClick={fetchNextPage} disabled={isLoading}>
-                    Next Page
-                  </button>
-                )}
-              </div>
-              {data.map((item, i) => (
-                <TokenAllowance key={`${item.tokenAddress}-${i}`} tokenItem={item} />
+              {data?.pages.map((group, i) => (
+                <Fragment key={i}>
+                  {group.data.map(
+                    (item, i) =>
+                      !NFT_CONTRACTS.includes(item.tokenAddress) && (
+                        <TokenAllowance key={`${item.tokenAddress}-${i}`} tokenItem={item} />
+                      )
+                  )}
+                </Fragment>
               ))}
               <div className="pagination">
-                {hasPrevPage && (
-                  <button type="button" onClick={fetchPrevPage} disabled={isLoading}>
-                    Previous Page
-                  </button>
-                )}
                 {hasNextPage && (
-                  <button type="button" onClick={fetchNextPage} disabled={isLoading}>
+                  <button type="button" onClick={() => fetchNextPage()} disabled={isLoading || isFetchingNextPage}>
                     Next Page
                   </button>
                 )}

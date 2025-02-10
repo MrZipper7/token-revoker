@@ -1,16 +1,13 @@
-import { useQuery, type QueryFunctionContext } from '@tanstack/react-query'
+import { type QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { useState } from 'react'
 
 import type { APIReturnData } from 'types'
 import { buildTokenData } from 'utils/buildTokenData'
 
-type PaginationDirection = 'next' | 'prev' | null
-
-async function fetchApprovalData({queryKey, meta}: QueryFunctionContext) {
-  const [_key, accountAddress, token] = queryKey
-  const baseUrl = `https://api.routescan.io/v2/network/mainnet/evm/53935/address/${accountAddress}/erc20-approvals`
-  const url = token && meta?.direction ? `${baseUrl}?limit=100&${meta.direction}=${token}` : `${baseUrl}?limit=100`
+async function fetchApprovalData({ queryKey, pageParam }: QueryFunctionContext) {
+  const [_key, accountAddress] = queryKey
+  const baseUrl = `https://api.routescan.io/v2/network/mainnet/evm/53935/address/${accountAddress}/erc20-approvals?status=active&limit=100`
+  const url = pageParam ? `${baseUrl}&next=${pageParam}` : `${baseUrl}`
 
   const response = await axios.get<APIReturnData>(url)
   return {
@@ -25,37 +22,10 @@ async function fetchApprovalData({queryKey, meta}: QueryFunctionContext) {
 }
 
 export function useFetchApprovalData(accountAddress: string) {
-  const [paginationToken, setPaginationToken] = useState<string | null>(null)
-  const [direction, setDirection] = useState<PaginationDirection>(null)
-
-  const { data, ...rest } = useQuery({
-    queryKey: ['approvals', accountAddress, paginationToken],
-    queryFn: async (context) => fetchApprovalData(context),
-    meta: {
-      direction,
-    },
+  return useInfiniteQuery({
+    queryKey: ['approvals', accountAddress],
+    queryFn: fetchApprovalData,
+    initialPageParam: undefined,
+    getNextPageParam: lastPage => lastPage.pagination.nextToken,
   })
-
-  const fetchNextPage = () => {
-    if (data?.pagination.nextToken) {
-      setPaginationToken(data.pagination.nextToken)
-      setDirection('next')
-    }
-  }
-
-  const fetchPrevPage = () => {
-    if (data?.pagination.prevToken) {
-      setPaginationToken(data.pagination.prevToken)
-      setDirection('prev')
-    }
-  }
-
-  return {
-    ...rest,
-    data: data?.data ?? [],
-    hasNextPage: data?.pagination.hasNextPage ?? false,
-    hasPrevPage: data?.pagination.hasPrevPage ?? false,
-    fetchNextPage,
-    fetchPrevPage,
-  }
 }
