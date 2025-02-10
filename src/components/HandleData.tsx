@@ -3,6 +3,7 @@ import { Fragment, useContext } from 'react'
 import { NFT_CONTRACTS } from 'constants/index'
 import { ModalContext } from 'context/ModalContext'
 import { useFetchApprovalData } from 'hooks/useFetchApprovalData'
+import { Button } from './Button'
 import { TokenAllowance } from './TokenAllowance'
 import 'App.css'
 
@@ -34,7 +35,7 @@ export function HandleData() {
                 <img
                   className="tokenLogo rotate"
                   alt=""
-                  src="https://glacier-api.avax.network/proxy/chain-assets/a0a2d1a/chains/53935/contracts/0x77f2656d04E158f915bC22f07B779D94c1DC47Ff/logo.png"
+                  src="https://defi-kingdoms.b-cdn.net/art-assets/tokens/jewel_token_x2.png"
                 />
               </div>
               <p>Loading Token Approvals...</p>
@@ -55,9 +56,11 @@ export function HandleData() {
               ))}
               <div className="pagination">
                 {hasNextPage && (
-                  <button type="button" onClick={() => fetchNextPage()} disabled={isLoading || isFetchingNextPage}>
-                    Next Page
-                  </button>
+                  <Button
+                    text={'Load More'}
+                    onClick={() => fetchNextPage()}
+                    isDisabled={isLoading || isFetchingNextPage}
+                  />
                 )}
               </div>
             </>

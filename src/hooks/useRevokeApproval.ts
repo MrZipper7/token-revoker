@@ -25,8 +25,8 @@ export function useRevokeApproval() {
 
       setIsLoading(false)
       setShowPending(false)
-    } catch {
-      console.log('Something went wrong.')
+    } catch (error) {
+      console.error(error)
       setIsLoading(false)
       setShowPending(false)
     }
