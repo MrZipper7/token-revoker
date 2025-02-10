@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, type QueryFunctionContext } from '@tanstack/react-query'
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -7,9 +7,10 @@ import { buildTokenData } from 'utils/buildTokenData'
 
 type PaginationDirection = 'next' | 'prev' | null
 
-async function fetchApprovalData(accountAddress: string, direction: PaginationDirection, token?: string) {
+async function fetchApprovalData({queryKey, meta}: QueryFunctionContext) {
+  const [_key, accountAddress, token] = queryKey
   const baseUrl = `https://api.routescan.io/v2/network/mainnet/evm/53935/address/${accountAddress}/erc20-approvals`
-  const url = token && direction ? `${baseUrl}?limit=100&${direction}=${token}` : `${baseUrl}?limit=100`
+  const url = token && meta?.direction ? `${baseUrl}?limit=100&${meta.direction}=${token}` : `${baseUrl}?limit=100`
 
   const response = await axios.get<APIReturnData>(url)
   return {
@@ -28,8 +29,11 @@ export function useFetchApprovalData(accountAddress: string) {
   const [direction, setDirection] = useState<PaginationDirection>(null)
 
   const { data, ...rest } = useQuery({
-    queryKey: ['approvals', accountAddress, direction, paginationToken],
-    queryFn: () => fetchApprovalData(accountAddress, direction, paginationToken || undefined),
+    queryKey: ['approvals', accountAddress, paginationToken],
+    queryFn: async (context) => fetchApprovalData(context),
+    meta: {
+      direction,
+    },
   })
 
   const fetchNextPage = () => {
