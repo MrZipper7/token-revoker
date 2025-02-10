@@ -51,11 +51,7 @@ const HandleData = ({ accountAddress }: { accountAddress: string }) => {
                 )}
               </div>
               {data.map((item, i) => (
-                <TokenAllowance
-                  key={`${item.tokenAddress}-${i}`}
-                  tokenItem={item}
-                  queryWalletAddress={accountAddress}
-                />
+                <TokenAllowance key={`${item.tokenAddress}-${i}`} tokenItem={item} />
               ))}
               <div className="pagination">
                 {hasPrevPage && (

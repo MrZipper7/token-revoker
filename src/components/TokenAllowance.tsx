@@ -5,10 +5,9 @@ import 'App.css'
 
 interface TokenAllowanceProps {
   tokenItem: TokenData
-  queryWalletAddress: string
 }
 
-const TokenAllowance = ({ tokenItem, queryWalletAddress }: TokenAllowanceProps) => {
+const TokenAllowance = ({ tokenItem }: TokenAllowanceProps) => {
   return (
     <>
       <div className="tokenContainer">
@@ -19,7 +18,7 @@ const TokenAllowance = ({ tokenItem, queryWalletAddress }: TokenAllowanceProps) 
           <div className="header-date-approved">Date Approved</div>
           <div className="header-revoke">Revoke</div>
         </div>
-        <Contracts spenders={tokenItem.spenders} token={tokenItem} walletAddress={queryWalletAddress} />
+        <Contracts token={tokenItem} />
       </div>
     </>
   )
