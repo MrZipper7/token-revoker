@@ -109,7 +109,14 @@ export function App() {
                   </div>
                 </>
               )}
-              <p className="warning">
+              <p>
+                Powered by{' '}
+                <a href={'https://routescan.io'} target="_blank" rel="noreferrer">
+                  Routescan.io
+                </a>{' '}
+                APIs
+              </p>
+              <p className="warning" style={{ padding: 0 }}>
                 This tool was developed by <strong>MrZipper</strong> for the DeFi Kingdoms community and is not directly
                 affiliated with DeFi Kingdoms or Kingdom Studios. Use it at your own risk. You can verify all official
                 contracts in the DFK Developer Documentation at:{' '}
