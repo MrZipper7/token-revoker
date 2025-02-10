@@ -18,7 +18,11 @@ const TokenAllowance = ({ tokenItem }: TokenAllowanceProps) => {
           <div className="header-date-approved">Date Approved</div>
           <div className="header-revoke">Revoke</div>
         </div>
-        <Contracts token={tokenItem} />
+        <div className="allowanceRowContainer">
+          {tokenItem.spenders.map((item, index) => (
+            <Contracts key={`${item.spenderAddress.slice(0, 8)}-${index}`} token={tokenItem} item={item} />
+          ))}
+        </div>
       </div>
     </>
   )
