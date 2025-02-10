@@ -56,7 +56,12 @@ const tokenInfo = [
   {
     contractAddress: '0x75224b0f245Fe51d5bf47A898DbB6720D4150BA7',
     name: 'Token Bridge (Synapse)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/53935/contracts/0xE05c976d3f045D0E6E7A6f61083d98A15603cF6A/logo.png',
+    logo: '',
+  },
+  {
+    contractAddress: '0xA7F9B7B0f729Dc98ae748f5505497909aFfdfa8A',
+    name: 'Token Bridge V1 (Synapse)',
+    logo: '',
   },
   {
     contractAddress: '0x501CdC4ef10b63219704Bf6aDb785dfccb06deE2',
@@ -71,7 +76,7 @@ const tokenInfo = [
   {
     contractAddress: '0x6a00Dc976a7291a1E9F5380FE6F96fE006dCdD3c',
     name: "Gaia's Tear Bridge (Deprecated)",
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/53935/contracts/0xE05c976d3f045D0E6E7A6f61083d98A15603cF6A/logo.png',
+    logo: '',
   },
   {
     contractAddress: '0xBF956B8B9cBE8af30CE923dF24C339ecA7589a61',
@@ -213,67 +218,95 @@ const tokenInfo = [
     name: 'DFK Duel S999',
     logo: '',
   },
+  {
+    contractAddress: '0x5C7d6ce011FDFCA8C6DB988206DEfAA6bb7E5269',
+    name: 'Weapon Auction',
+    logo: '',
+  },
+  {
+    contractAddress: '0xF063bF01075884BdCfD0e16976cE34AFdae2Db3C',
+    name: 'Armor Auction',
+    logo: '',
+  },
+  {
+    contractAddress: '0x5e57E11B319CFb4fb1c3D02231423fDA5aaF2038',
+    name: 'Accessory Auction',
+    logo: '',
+  },
+  {
+    contractAddress: '0xEbaD9CD534aEEe4d8661599321018dAb20cDCE95',
+    name: 'Equipment Shop',
+    logo: '',
+  },
+  {
+    contractAddress: '0xf697D08Fba8db26EA8B9868aB3214f9E072F8f1c',
+    name: 'Stylist',
+    logo: '',
+  },
+
+  
+
 
   // Major Tokens & Currencies
   {
     contractAddress: '0x04b9dA42306B023f3572e106B11D82aAd9D32EBb',
     name: 'CRYSTAL',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/cb14a1f/chains/53935/contracts/0x04b9dA42306B023f3572e106B11D82aAd9D32EBb/logo.png',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/tokens/crystal_token_x2.png',
   },
   {
     contractAddress: '0x3AD9DFE640E1A9Cc1D9B0948620820D975c3803a',
     name: 'USD Coin (USDC)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/cb14a1f/chains/53935/contracts/0x3AD9DFE640E1A9Cc1D9B0948620820D975c3803a/logo.png',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/defi-kingdoms.appspot.com/o/tokens%2F1USDC.png?alt=media',
   },
   {
     contractAddress: '0x77f2656d04E158f915bC22f07B779D94c1DC47Ff',
     name: 'xJEWEL',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/a0a2d1a/chains/53935/contracts/0x77f2656d04E158f915bC22f07B779D94c1DC47Ff/logo.png',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/tokens/jewel_token_x2.png',
   },
   {
     contractAddress: '0xccb93dabd71c8dad03fc4ce5559dc3d89f67a260',
     name: 'Wrapped JEWEL (wJEWEL)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/a0a2d1a/chains/53935/contracts/0x77f2656d04E158f915bC22f07B779D94c1DC47Ff/logo.png',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/tokens/jewel_token_x2.png',
   },
   {
     contractAddress: '0x6E7185872BCDf3F7a6cBbE81356e50DAFFB002d2',
     name: 'xCRYSTAL',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/cb14a1f/chains/53935/contracts/0x04b9dA42306B023f3572e106B11D82aAd9D32EBb/logo.png',
+    logo: 'https://defi-kingdoms.b-cdn.net/art-assets/tokens/crystal_token_x2.png',
   },
   {
     contractAddress: '0xB57B60DeBDB0b8172bb6316a9164bd3C695F133a',
     name: 'Avalanche (AVAX)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/3e1b653/chains/53935/contracts/0xB57B60DeBDB0b8172bb6316a9164bd3C695F133a/logo.png',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/defi-kingdoms.appspot.com/o/tokens%2FAVAX.png?alt=media',
   },
   {
     contractAddress: '0xfBDF0E31808d0aa7b9509AA6aBC9754E48C58852',
     name: 'Ethereum (ETH)',
-    logo: 'https://images.ctfassets.net/gcj8jwzm6086/65a97cd3-67e3-424a-b278-0744bd6f2dd6/9e925614abed5080ecc2e177e4c35229/43114-0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15.png',
+    logo: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png',
   },
   {
     contractAddress: '0x97855Ba65aa7ed2F65Ed832a776537268158B78a',
-    name: 'Klaytn (KLAY)',
-    logo: 'https://klaytn.foundation/wp-content/themes/klaytn/download/klaytn-symbol.svg',
+    name: 'Kaia (KAIA)',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/defi-kingdoms.appspot.com/o/tokens%2FKAIA.png?alt=media',
   },
   {
     contractAddress: '0x7516eb8b8edfa420f540a162335eacf3ea05a247',
     name: 'Bitcoin (BTC.b)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/f9c6549/chains/43114/contracts/0x152b9d0FdC40C096757F570A51E494bd4b943E50/logo.png',
+    logo: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
   },
   {
     contractAddress: '0xD17a41Cd199edF1093A9Be4404EaDe52Ec19698e',
     name: 'Matic (MATIC)',
-    logo: 'https://polygonscan.com/images/svg/brands/matic.svg',
+    logo: 'https://cryptologos.cc/logos/polygon-matic-logo.png?v=014',
   },
   {
     contractAddress: '0x2Df041186C844F8a2e2b63F16145Bc6Ff7d23E25',
     name: 'Fantom (FTM)',
-    logo: 'https://s3.coinmarketcap.com/static/img/portraits/62d51d9af192d82df8ff3a83.png',
+    logo: 'https://cryptologos.cc/logos/fantom-ftm-logo.png?v=014',
   },
   {
     contractAddress: '0x11C3b7bADC5359242c34C68C1F0f071bFf49a3D8',
     name: 'Honk (HONK)',
-    logo: 'https://glacier-api.avax.network/proxy/chain-assets/b9c4e18/chains/53935/contracts/0x11C3b7bADC5359242c34C68C1F0f071bFf49a3D8/logo.png',
+    logo: 'https://firebasestorage.googleapis.com/v0/b/defi-kingdoms.appspot.com/o/tokens%2FHONK.png?alt=media',
   },
 
   // LP Tokens

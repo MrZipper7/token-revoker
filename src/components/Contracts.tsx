@@ -1,6 +1,6 @@
 import cx from 'clsx'
 
-import { MAX_ALLOWANCE } from 'constants/index'
+import { MAX_ALLOWANCE_PREFIX } from 'constants/index'
 import { useRevokeApproval } from 'hooks/useRevokeApproval'
 import type { Spender, TokenData } from 'types'
 import { parseTokenInfo } from 'utils/tokenInfo'
@@ -32,7 +32,9 @@ export function Contracts({ token, item }: ContractsProps) {
       </div>
 
       <div className="allowance">
-        {item.allowance === MAX_ALLOWANCE ? 'Unlimited' : Number(item.allowance) / 10 ** token.tokenDecimals}
+        {item.allowance.length === 78 && item.allowance.slice(0, 16) === MAX_ALLOWANCE_PREFIX
+          ? 'Unlimited'
+          : Number(item.allowance) / 10 ** token.tokenDecimals}
       </div>
 
       <div className="dateApproved">{item.timestamp.slice(0, 10)}</div>
@@ -40,8 +42,8 @@ export function Contracts({ token, item }: ContractsProps) {
       <div className="revoke">
         <button
           type={'submit'}
-          className={cx('revokeButton', { disabled: isLoading })}
-          disabled={isLoading}
+          className={cx('revokeButton', { disabled: isLoading || item.allowance === '0' })}
+          disabled={isLoading || item.allowance === '0'}
           onClick={() => {
             handleRevoke(token.tokenAddress, item.spenderAddress)
           }}
